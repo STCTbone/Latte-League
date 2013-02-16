@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  price: 1.5
+  name: MyString
+  country: MyString
+  city: MyString
+  category: MyString
+  is_available: false
+
+two:
+  price: 1.5
+  name: MyString
+  country: MyString
+  city: MyString
+  category: MyString
+  is_available: false
