@@ -1,12 +1,12 @@
 LatteLeague::Application.routes.draw do
- 
+
   root :to => 'users#new'
 
-  get "session/new"
+  get "session/new", as: 'new_session'
 
-  get "session/create"
+  post "session/create", as: 'sessions'
 
-  get "session/destroy"
+  delete "session/destroy" as: 'sessions'
 
   resources :orders
 
