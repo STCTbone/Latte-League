@@ -16,6 +16,7 @@ LatteLeague::Application.routes.draw do
 
   delete "/sessions/" => "sessions#destroy", as: 'logout'
 
+  put '/orders/:id/submit' => 'Orders#submit_order', :as => 'submit_order'
   put '/orders/:id/fulfil' => 'Orders#fulfil_order', :as => 'fulfil_order'
   put '/orders/:id/complete' => 'Orders#complete_order', :as => 'complete_order'
 

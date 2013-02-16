@@ -33,6 +33,16 @@ class OrdersController < ApplicationController
     @completed_orders = Order.where(:status => 'Picked up')
   end
 
+
+
+  def submit_order
+      order = Order.find(params[:id])
+    order.status='Waiting'
+    order.save
+    redirect_to my_orders_path
+  end
+
+
   def fulfil_order
     order = Order.find(params[:id])
     order.status='Ready'
@@ -89,7 +99,7 @@ end
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-
+    @order.total_price=0
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

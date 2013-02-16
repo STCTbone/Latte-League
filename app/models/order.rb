@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   def total
        sum = 0
        self.items.each do |item|
-        sum += item.price
+        sum += item.price.to_i
        end
        return sum
   end
