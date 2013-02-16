@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216155718) do
+ActiveRecord::Schema.define(:version => 20130216172946) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "item_orders", :force => true do |t|
     t.integer  "item_id"
@@ -25,10 +31,10 @@ ActiveRecord::Schema.define(:version => 20130216155718) do
     t.string   "name"
     t.string   "country"
     t.string   "city"
-    t.string   "category"
     t.boolean  "is_available"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "category_id"
   end
 
   create_table "orders", :force => true do |t|
