@@ -1,0 +1,119 @@
+<% content_for :breadcrumb do %>
+  <li class="active">Home / Orders</li>
+<% end %>
+
+<% if @waiting_orders.any? %>
+<h1>Awaiting Fulfillment</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Price</th>
+      <th>Instructions</th>
+      <th>Status</th>
+      <th>Pickup Time</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @waiting_orders.each do |order| %>
+      <tr>        
+        <td><%= order.user.email %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.instructions %></td>
+        <td><%= order.status %></td>
+        <td><%= order.pickup_time %></td>
+        <td align='right'>
+
+  <%= link_to 'Edit', edit_order_path(order), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+</table>
+
+<% else %>
+<% end %>
+
+
+<% if @ready_orders.any? %>
+<h1>Ready for Pickup</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Price</th>
+      <th>Instructions</th>
+      <th>Status</th>
+      <th>Pickup Time</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @ready_orders.each do |order| %>
+      <tr>        
+        <td><%= order.user.email %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.instructions %></td>
+        <td><%= order.status %></td>
+        <td><%= order.pickup_time %></td>
+        <td align='right'>
+
+  <%= link_to 'Edit', edit_order_path(order), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+</table>
+
+<% else %>
+<% end %>
+
+
+<% if @completed_orders.any? %>
+<h1>Completed Orders</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Price</th>
+      <th>Instructions</th>
+      <th>Status</th>
+      <th>Pickup Time</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @completed_orders.each do |order| %>
+      <tr>        
+        <td><%= order.user.email %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.instructions %></td>
+        <td><%= order.status %></td>
+        <td><%= order.pickup_time %></td>
+        <td align='right'>
+
+  <%= link_to 'Edit', edit_order_path(order), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+</table>
+
+<% else %>
+<% end %>

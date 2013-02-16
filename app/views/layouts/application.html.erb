@@ -36,8 +36,13 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "View all orders", orders_path %></li>
+              <li><%= link_to "My orders", my_orders_path %></li>
+
               <li><%= link_to "Add order", new_order_path %></li>
+             <li><%= link_to "Order Admin", order_admin_path %></li> 
+
             </ul>
+
           </li>
           <% end %>
 

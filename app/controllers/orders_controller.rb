@@ -25,7 +25,12 @@ class OrdersController < ApplicationController
     @my_orders = Order.where(:user_id => current_user.id)
   end
 
-
+  def order_admin
+    @orders = Order.all
+    @waiting_orders = Order.where(:status => 'Waiting')
+    @ready_orders = Order.where(:status => 'Ready')
+    @completed_orders = Order.where(:status => 'Picked up')
+  end
 
   # GET /orders/new
   # GET /orders/new.json
