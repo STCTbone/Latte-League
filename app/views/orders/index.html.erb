@@ -1,5 +1,3 @@
-
-
 <% content_for :breadcrumb do %>
   <li class="active">Home / Orders</li>
 <% end %>
@@ -27,17 +25,18 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.user.email %></td>
-        <td><%= order.total_price %></td>
+        <td>$<%= order.total_price %></td>
         <td><%= order.instructions %></td>
         <td><%= order.status %></td>
         <td><%= order.pickup_time %></td>
 
+  <% if session[:is_vendor] %>
         <td align='right'>
   <%= link_to 'Edit', edit_order_path(order), :class => 'btn btn-primary' %>
   <%= link_to 'Delete', order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
         </td>
       </tr>
     <% end %>
+    <% end %>
   </tbody>
 </table>
-
