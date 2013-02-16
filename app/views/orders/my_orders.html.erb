@@ -1,5 +1,4 @@
 
-
 <% content_for :breadcrumb do %>
   <li class="active">Home / Orders</li>
 <% end %>
@@ -28,7 +27,7 @@
 
 
     <% @my_orders.each do |order| %>
-      <tr>        
+      <tr>
         <td><%= order.user.email %></td>
         <td><%= order.total_price %></td>
         <td><%= order.instructions %></td>

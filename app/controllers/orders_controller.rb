@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   end
 
   def my_orders
-    @my_orders = Order.where(:user_id => current_user.id)
+      @my_orders = Order.where(:user_id => current_user.id)
   end
 
   def order_admin
