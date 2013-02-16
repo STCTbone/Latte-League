@@ -7,4 +7,12 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :status, :total_price, :user_id
+
+  def total
+       sum = 0
+       self.items.each do |item|
+        sum += item.price
+       end
+       return sum
+  end
 end
