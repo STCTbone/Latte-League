@@ -32,6 +32,42 @@ class OrdersController < ApplicationController
     @completed_orders = Order.where(:status => 'Picked up')
   end
 
+  def fulfil_order
+    order = Order.find(params[:id])
+    order.status='Ready'
+    order.save
+    redirect_to order_admin_path
+  end
+
+  def complete_order
+    order = Order.find(params[:id])
+    order.status='Picked up'
+    order.save
+    redirect_to order_admin_path
+  end
+
+  def export_orders
+    require 'rubygems'
+    require 'yaml'
+
+    orders = Order.all
+      @export = orders
+
+  book = Spreadsheet::Workbook.new
+  sheet1 = book.create_worksheet :name => 'Orders export'
+  sheet1.row(0).concat ["Username"]
+  @export.each_with_index do |t, i|
+    sheet1.row(i+1).concat([ t.user.email])
+  end
+
+  require 'stringio'
+  data = StringIO.new ''
+  book.write data
+  send_data data.string, :type=>"application/excel", :disposition=>'attachment', :filename => "orders_export_#{l(Date.today)}.xls"
+end
+
+
+
   # GET /orders/new
   # GET /orders/new.json
   def new

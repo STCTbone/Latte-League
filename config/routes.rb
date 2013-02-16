@@ -1,9 +1,15 @@
 LatteLeague::Application.routes.draw do
 
   resources :categories
+  
 
+  post "/orders/export" => 'Orders#export_orders', :as => 'export_orders'
 
   root :to => 'users#new'
+  
+
+
+
 
   get "/login" => "sessions#new", as: 'login'
   get "/my_orders" => "orders#my_orders", as: 'my_orders'
@@ -15,6 +21,9 @@ LatteLeague::Application.routes.draw do
   post "/sessions" => "sessions#create", as: 'sessions'
 
   delete "/sessions/" => "sessions#destroy", as: 'logout'
+
+  put '/orders/:id/fulfil' => 'Orders#fulfil_order', :as => 'fulfil_order'
+  put '/orders/:id/complete' => 'Orders#complete_order', :as => 'complete_order'
 
   resources :orders
   resources :item_orders
