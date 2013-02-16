@@ -74,11 +74,13 @@ class ItemOrdersController < ApplicationController
   # DELETE /item_orders/1.json
   def destroy
     @item_order = ItemOrder.find(params[:id])
+    @order = Order.where(:id => @item_order.item_id)
     @item_order.destroy
 
     respond_to do |format|
-      format.html { redirect_to item_orders_url }
+      format.html { redirect_to order_url(@order) }
       format.json { head :no_content }
+
     end
   end
 end

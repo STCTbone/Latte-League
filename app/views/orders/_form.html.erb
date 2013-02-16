@@ -6,10 +6,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :user, label_method: :email%>
-    <%= f.input :total_price %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => session[:user_id] }%>
+    <%= f.input :status, :as => :hidden, :input_html => { :value => 'In Progress' }%>
+    <%= f.label "Total Price: $#{@order.total}" %>
     <%= f.input :instructions %>
-    <%= f.input :status, collection: [ "Waiting", "Ready", "Picked up"]%>
     <%= f.input :pickup_time %>
 
   </div>
