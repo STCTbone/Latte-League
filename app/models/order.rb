@@ -4,5 +4,5 @@ class Order < ActiveRecord::Base
   has_many :items, through: :item_order
   belongs_to :user
 
-  validates_presence_of :pickup_time, :status, :total_price, :user_id
+  validates_presence_of :status, :total_price, :user_id
 end
