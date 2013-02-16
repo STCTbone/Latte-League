@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>New Order</title>
+</head>
+<body>
+<h1>New order from: <%= @user.first_name %> <%= @user.last_name %></h2>
+
+<ul>
+    <% @order.items.each do |item| %>
+        <li><%=item.name%></li>
+    <% end %>
+</ul>
+
+<h2>Extra Instructions:</h2>
+<p><%= @order.instructions %></p>
+</body>
+</html>
