@@ -1,5 +1,8 @@
 LatteLeague::Application.routes.draw do
 
+  resources :categories
+
+
   root :to => 'users#new'
 
   get "session/new", as: 'new_session'
