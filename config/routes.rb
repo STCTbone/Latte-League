@@ -5,11 +5,11 @@ LatteLeague::Application.routes.draw do
 
   root :to => 'users#new'
 
-  get "/login" "sessions#new", as: 'login'
+  get "/login" => "sessions#new", as: 'login'
 
-  post "/sessions" "sessions#create", as: 'sessions'
+  post "/sessions" => "sessions#create", as: 'sessions'
 
-  delete "/sessions" "sessions#destroy", as: 'logout'
+  delete "/sessions" => "sessions#destroy", as: 'logout'
 
   resources :orders
   resources :item_orders
