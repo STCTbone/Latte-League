@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
       order = Order.find(params[:id])
     order.status='Waiting'
     order.save
+    StatusMailer.status_email(order.user.id, order.id)
     redirect_to my_orders_path
   end
 
@@ -138,5 +139,10 @@ end
       format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
+  end
+
+
+  def chart
+    
   end
 end
