@@ -1,37 +1,23 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :pickup_time %><br />
-    <%= f.datetime_select :pickup_time %>
-  </div>
-  <div class="field">
-    <%= f.label :total_price %><br />
-    <%= f.text_field :total_price %>
-  </div>
-  <div class="field">
-    <%= f.label :instructions %><br />
-    <%= f.text_area :instructions %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% content_for :breadcrumb do %>
+  <li class="active">Home / new order</li>
 <% end %>
+
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user, label_method: :email%>
+    <%= f.input :total_price %>
+    <%= f.input :instructions %>
+    <%= f.input :status %>
+    <%= f.input :pickup_time %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to "Go back", orders_path, :class => 'btn btn-success' %>
+
+    </div>
+<% end %>
+
