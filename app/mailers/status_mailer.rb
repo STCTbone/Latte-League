@@ -11,7 +11,7 @@ class StatusMailer < ActionMailer::Base
     def order_email(user_id, order_id)
         @user = user.find_by_id(user_id)
         @order = order.find_by_id(order_id)
-        mail(to: 'matthew.rieger@gmail.com', subject: "New Order from #{@user.first_name} #{@user.last_name}")
+        mail(to: 'riegerlegal@me.com', subject: "New Order from #{@user.first_name} #{@user.last_name}")
     end
 
     def status_email(user_id, order_id)
