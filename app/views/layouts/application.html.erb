@@ -14,8 +14,8 @@
       <div class="navbar-inner">
 
       <div class="container">
-        <a class="brand" href="#"><%= image_tag "logo.png", width: '130px' %></a>
-        <a class="brand" href="#"><%= image_tag "UmpOi.gif", width: '64px' %></a>
+        <a class="brand" href="#"><%= image_tag "AlternateLogo.jpg", width: '300px' %></a>
+
         <ul class="nav">
           <% if session[:user_id] %>
 
@@ -74,6 +74,7 @@
             <li><%= link_to "Sign In", login_path %></li>
             <li><%= link_to "Sign Up", new_user_path %></li>
           <% end %>
+          <a class="brand" href="#"><%= image_tag "UmpOi.gif", width: '64px' %></a>
         </ul>
       </div>
       </div>
