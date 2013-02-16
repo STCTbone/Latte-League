@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<table class="table table-bordered table-striped table-hover">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -18,7 +18,9 @@
       <th>City</th>
       <th>Price</th>
       <th>Category</th>
+      <% if session[:is_vendor] %>
       <th>Is available?</th>
+      <% end %>
       <% if session[:is_vendor] %>
         <th>&nbsp;</th>
       <% end %>
@@ -32,7 +34,11 @@
         <td><%= item.city %></td>
         <td>$<%= item.price %></td>
         <td><%= item.category.name %></td>
-        <td><%= item.is_available %></td>
+
+
+  <% if session[:is_vendor] %>
+    <td><%= item.is_available %></td>
+    <% end %>
 
   <% if session[:is_vendor] %>
         <td align='right'>
