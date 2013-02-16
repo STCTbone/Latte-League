@@ -6,7 +6,7 @@ LatteLeague::Application.routes.draw do
 
   post "session/create", as: 'sessions'
 
-  delete "session/destroy" as: 'sessions'
+  delete "session/destroy", as: 'sessions'
 
   resources :orders
 
