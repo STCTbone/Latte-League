@@ -1,4 +1,7 @@
 LatteLeague::Application.routes.draw do
+ 
+  root :to => 'users#new'
+
   get "session/new"
 
   get "session/create"
