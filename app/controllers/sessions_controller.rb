@@ -3,6 +3,7 @@ class SessionController < ApplicationController
   end
 
   def create
+  	# user = User.authenticate(params[:email], params[:password])
   end
 
   def destroy
