@@ -1,5 +1,5 @@
 class StatusMailer < ActionMailer::Base
-  default from: "admin@latteleague.com"
+  default from: "matthew.rieger@gmail.com"
 
     def notification_email
         @user = params[:user]

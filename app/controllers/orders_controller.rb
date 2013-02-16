@@ -39,7 +39,8 @@ class OrdersController < ApplicationController
       order = Order.find(params[:id])
     order.status='Waiting'
     order.save
-    StatusMailer.status_email(order.user.id, order.id)
+
+    StatusMailer.order_email(order.user.id, order.id).deliver
     redirect_to my_orders_path
   end
 
@@ -143,6 +144,6 @@ end
 
 
   def chart
-    
+
   end
 end
