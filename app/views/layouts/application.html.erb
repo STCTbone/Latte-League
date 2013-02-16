@@ -14,7 +14,7 @@
       <div class="navbar-inner">
 
       <div class="container">
-        <a class="brand" href="#">Latte League</a>
+        <a class="brand" href="#"><%= image_tag "UmpOi.gif" %></a>
         <ul class="nav">
           <% if session[:user_id] %>
 
@@ -39,7 +39,7 @@
               <li><%= link_to "My orders", my_orders_path %></li>
 
               <li><%= link_to "Add order", new_order_path %></li>
-             <li><%= link_to "Order Admin", order_admin_path %></li> 
+             <li><%= link_to "Order Admin", order_admin_path %></li>
 
             </ul>
 
