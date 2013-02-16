@@ -1,35 +1,48 @@
+
+<br>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Price:</b>
-  <%= @item.price %>
-</p>
+<% content_for :breadcrumb do %>
+  <li class="active"> Home / items</li>
+<% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @item.name %>
-</p>
+<h1>Item Details</h1>
 
-<p>
-  <b>Country:</b>
-  <%= @item.country %>
-</p>
+<div class="well">
 
-<p>
-  <b>City:</b>
-  <%= @item.city %>
-</p>
+  <%= link_to 'Show all items', items_path, :class => 'btn btn-primary' %>
 
-<p>
-  <b>Category:</b>
-  <%= @item.category %>
-</p>
+</div>
 
-<p>
-  <b>Is available:</b>
-  <%= @item.is_available %>
-</p>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Category</th>
+      <th>Is available?</th>
 
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @item.price %></th>        
+        <td><%= @item.price %></th>        
+        <td><%= @item.country %></th>        
+        <td><%= @item.city %></th>        
+        <td><%= @item.category_id %></th>        
+        <td><%= @item.is_available %></th>        
+        
+    
+        <td>
+  <%= link_to 'Edit', edit_item_path(@item), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', @item, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<br>
