@@ -1,35 +1,42 @@
+
+<br>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+<% content_for :breadcrumb do %>
+  <li class="active"> Home / User</li>
+<% end %>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>Mobile:</b>
-  <%= @user.mobile %>
-</p>
-
-<p>
-  <b>Is vendor:</b>
-  <%= @user.is_vendor %>
-</p>
+<h1>User Details</h1>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+<div class="well">
+
+  <%= link_to 'Show all users', users_path, :class => 'btn btn-primary' %>
+
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @user.user_name %></th>        
+        <td><%= @user.firstname %></th>        
+        <td><%= @user.lastname %></th>        
+    
+        <td>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', @user, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<br>

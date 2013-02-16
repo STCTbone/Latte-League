@@ -1,33 +1,33 @@
-<h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Password</th>
-    <th>Mobile</th>
-    <th>Is vendor</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.password %></td>
-    <td><%= user.mobile %></td>
-    <td><%= user.is_vendor %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% content_for :breadcrumb do %>
+  <li class="active">Home / Users</li>
 <% end %>
+
+<h1>Users</h1>
+<h5>List of Users in the system</h5>
+<div class="well">
+  <%= link_to 'Create a new user', new_user_path, :class => 'btn btn-success' %>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>        
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td align='right'>
+  <%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', user, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New User', new_user_path %>
