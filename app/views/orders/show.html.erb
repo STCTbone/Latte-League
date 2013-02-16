@@ -10,7 +10,7 @@
 
 <div class="well">
  <%= link_to "Submit Order", {:controller => :Orders, :action => 'submit_order'}, :class => 'btn btn-success', :confirm => 'Are you sure?', :method => :put %>
-  
+
 
 </div>
 
@@ -30,11 +30,11 @@
   </thead>
   <tbody>
       <tr>
-        <td><%= @order.id %></th>        
-        <td><%= @order.total_price %></th>        
-        <td><%= @order.pickup_time %></th>       
-        <td><%= @order.status %></th>    
-    
+        <td><%= @order.id %></th>
+        <td><%= @order.total %></th>
+        <td><%= @order.pickup_time %></th>
+        <td><%= @order.status %></th>
+
         <td>
   <%= link_to 'Edit', edit_order_path(@order), :class => 'btn btn-primary' %>
   <%= link_to 'Delete', @order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
@@ -61,8 +61,8 @@
   <tbody>
     <% @order.items.each do |item| %>
       <tr>
-        <td><%= item.name %></td> 
-        <td><%= item.price %></td>        
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
         <td><%= item.city %></td>
         <td><%= item.country %></td>
         <td>
@@ -82,7 +82,7 @@
  </div>
 <div id="demo" class="collapse">
   <br>
- 
+
   <%= simple_form_for(@item_order) do |f| %>
   <%= f.error_notification %>
 
