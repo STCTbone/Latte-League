@@ -55,9 +55,9 @@ class OrdersController < ApplicationController
 
   book = Spreadsheet::Workbook.new
   sheet1 = book.create_worksheet :name => 'Orders export'
-  sheet1.row(0).concat ["Username"]
+  sheet1.row(0).concat ["Username", "Completed Time", "Total Price"]
   @export.each_with_index do |t, i|
-    sheet1.row(i+1).concat([ t.user.email])
+    sheet1.row(i+1).concat([ t.user.email, t.completed_at, t.total_price])
   end
 
   require 'stringio'
