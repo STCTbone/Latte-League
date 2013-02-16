@@ -22,7 +22,7 @@ users.each do |user_hash|
   u.first_name = user_hash[:first_name]
   u.last_name = user_hash[:last_name]
   u.email = user_hash[:email]
-  u.password = ["1"]
+  u.password = "1"
   u.is_vendor = true
   u.mobile = ['0','1','2','3','4','5','6','7','8','9'].shuffle.join
   u.save
