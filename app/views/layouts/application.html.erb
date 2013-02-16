@@ -16,10 +16,6 @@
       <div class="container">
         <a class="brand" href="#">Latte League</a>
         <ul class="nav">
-          <% unless session[:user_id] %>
-          <li><%= link_to "Sign Up", new_user_path %></li>
-          <% end %>
-
 
           <% if session[:user_id] %>
 <li class="dropdown">
@@ -70,9 +66,10 @@
 
 
           <% if session[:user_id] %>
-          <li><%= link_to "Sign Out", logout_path, method: 'delete' %></li>
+            <li><%= link_to "Sign Out", logout_path, method: 'delete' %></li>
           <% else %>
             <li><%= link_to "Sign In", sessions_path, method: 'post'%></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
           <% end %>
 
         </ul>
