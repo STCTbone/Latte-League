@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
     require 'rubygems'
     require 'yaml'
 
-    orders = Order.all
+    orders = Order.where(status: "Complete")
       @export = orders
 
   book = Spreadsheet::Workbook.new

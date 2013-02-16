@@ -42,7 +42,9 @@
                 <% end %>
                 <li><%= link_to "Add order", new_order_path %></li>
                 <li><%= link_to "View my orders", my_orders_path %></li>
+                <% if session[:is_vendor] %>
                 <li><%= link_to "Order Administration", order_admin_path %></li>
+                <% end %>
               </ul>
             </li>
 
@@ -55,7 +57,9 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "View all items", items_path %></li>
+              <% if session[:is_vendor] %>
               <li><%= link_to "Add item", new_item_path %></li>
+              <% end %>
             </ul>
           </li>
 
