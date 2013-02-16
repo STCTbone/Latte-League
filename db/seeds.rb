@@ -32,12 +32,18 @@ names = [ "Kangocho", "Zirikana", "Tres Santos", "Black Cat", "Organic Earl Grey
 
 country = ["USA"]
 
-city = ["Los Angeles", "Chicago", "Seattle", "Portland", "Sacramento", "Napa", "Philadelphia"]
+city = ["Los Angeles", "Chicago", "Seattle", "Portland", "Sacramento", "Napa", "Philadelphia", "Botswana USA"]
 
 category = ["Tea", "Coffee"]
 
 is_available = ["true", "false"]
 
+Category.destroy_all
+20.times do
+  c = Category.new
+  c.name = category.sample
+  c.save
+end
 
 Item.destroy_all
 30.times do
@@ -46,7 +52,7 @@ Item.destroy_all
   i.name = names.sample
   i.country = country.sample
   i.city = city.sample
-  i.category = category.sample
+  i.category_id = Category.all.shuffle.first.id
   i.is_available = true
   i.save
 end
@@ -59,4 +65,5 @@ Order.destroy_all
   o.user_id = User.all.shuffle.first.id
   o.total_price = ['0','1', '2', '3'].shuffle.join
   o.status = status.sample
+  o.save
 end
