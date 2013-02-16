@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
+    @item_order = ItemOrder.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @order }
@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 
   def my_orders
     @my_orders = Order.where(:user_id => current_user.id)
+    @item_order = ItemOrder.new
   end
 
   def order_admin
@@ -57,7 +58,7 @@ class OrdersController < ApplicationController
   sheet1 = book.create_worksheet :name => 'Orders export'
   sheet1.row(0).concat ["Username", "Completed Time", "Total Price"]
   @export.each_with_index do |t, i|
-    sheet1.row(i+1).concat([ t.user.email, t.completed_at, t.total_price])
+    sheet1.row(i+1).concat([ t.user.email, t.updated_at, t.total_price])
   end
 
   require 'stringio'
@@ -98,6 +99,7 @@ end
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /orders/1

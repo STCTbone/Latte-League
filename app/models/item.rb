@@ -2,7 +2,9 @@ class Item < ActiveRecord::Base
   attr_accessible :category_id, :city, :country, :is_available, :name, :price
 
   has_many :orders
+  has_many :item_orders
   belongs_to :category
+
 
   validates_presence_of :category_id, :is_available, :name, :price
   validates_uniqueness_of :name

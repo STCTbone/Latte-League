@@ -44,13 +44,14 @@ class ItemOrdersController < ApplicationController
 
     respond_to do |format|
       if @item_order.save
-        format.html { redirect_to @item_order, notice: 'Item order was successfully created.' }
+        format.html { redirect_to order_path(@item_order.order_id), notice: 'Item order was successfully created.' }
         format.json { render json: @item_order, status: :created, location: @item_order }
       else
         format.html { render action: "new" }
         format.json { render json: @item_order.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /item_orders/1
