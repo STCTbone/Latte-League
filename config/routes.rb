@@ -4,7 +4,7 @@ LatteLeague::Application.routes.draw do
 
 
   post "/orders/export" => 'Orders#export_orders', :as => 'export_orders'
-  root :to => 'users#new'
+  root :to => 'users#login'
 
   get "/login" => "sessions#new", as: 'login'
   get "/my_orders" => "orders#my_orders", as: 'my_orders'
