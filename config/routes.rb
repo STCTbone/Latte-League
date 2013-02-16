@@ -7,6 +7,10 @@ LatteLeague::Application.routes.draw do
 
   get "/login" => "sessions#new", as: 'login'
   get "/my_orders" => "orders#my_orders", as: 'my_orders'
+  get "/order_admin" => "orders#order_admin", as: 'order_admin'
+
+
+
 
   post "/sessions" => "sessions#create", as: 'sessions'
 
