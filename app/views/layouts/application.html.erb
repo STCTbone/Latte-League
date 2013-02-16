@@ -64,9 +64,11 @@
             </ul>
           </li>
 
-
-
-
+          <% if session[:user_id] %>
+          <li><%= link_to "Sign Out", logout_path, method: 'delete' %></li>
+          <% else %>
+            <li><%= link_to "Sign In", sessions_path, method: 'post'%></li>
+          <% end %>
 
         </ul>
       </div>

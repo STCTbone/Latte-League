@@ -9,7 +9,7 @@ LatteLeague::Application.routes.draw do
 
   post "/sessions" => "sessions#create", as: 'sessions'
 
-  delete "/sessions" => "sessions#destroy", as: 'logout'
+  delete "/sessions/" => "sessions#destroy", as: 'logout'
 
   resources :orders
   resources :item_orders
