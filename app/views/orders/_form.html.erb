@@ -10,7 +10,7 @@
     <%= f.input :status, :as => :hidden, :input_html => { :value => 'In Progress' }%>
     <%= f.label "Total Price: $#{@order.total}" %>
     <%= f.input :instructions, :input_html => {:style => 'width: 600px; height: 50px'} %>
-    <%= f.input :pickup_time %>
+    <%= f.input :pickup_time, :class => 'small' %>
 
   </div>
 
