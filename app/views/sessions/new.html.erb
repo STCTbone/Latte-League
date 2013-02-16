@@ -1,11 +1,15 @@
 <h1>Login</h1>
 
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
 <%= form_tag "sessions" do %>
 	<%= label_tag :email %>
 	<%= text_field_tag :email %>
 
 	<%= label_tag :password %>
-	<%= text_field_tag :password %>
-
-	<%= submit_tag "Submit", disable_with: "Submitting..." %>
+	<%= password_field_tag :password %>
+	<br>
+	<%= submit_tag "Submit", disable_with: "Submitting...", :class => "btn" %>
 <% end %>
