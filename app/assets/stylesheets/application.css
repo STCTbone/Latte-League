@@ -15,4 +15,5 @@
 body {
 	background-image:url('app/assets/images/woodbackground.png');
 	background-repeat:repeat-y;
+	width: 400px;
 }
