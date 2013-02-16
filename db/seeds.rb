@@ -28,6 +28,9 @@ users.each do |user_hash|
   u.save
 end
 
+u = User.new({ first_name: "user",last_name: "joe", email: "joe@gmail.com", password: "password", mobile: "1234567891", is_vendor: false})
+u.save
+
 names = [ "Kangocho", "Zirikana", "Tres Santos", "Black Cat", "Organic Earl Grey", "Summer Satrupa Assam", "Organic Emerald Spring", "Organic Kagoshima Shincha", "Organic Green Needles", "Organic White Peony", "Chai", "Espresso", "Cappucinno", "Macchiato", "Mocha", "Angelino", "Green", "Latte", "Espresso"]
 
 country = ["USA"]
