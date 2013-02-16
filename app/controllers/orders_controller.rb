@@ -21,6 +21,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def my_orders
+    @my_orders = Order.where(:user_id => current_user.id)
+  end
+
+
+
   # GET /orders/new
   # GET /orders/new.json
   def new

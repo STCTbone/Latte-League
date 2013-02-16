@@ -6,6 +6,7 @@ LatteLeague::Application.routes.draw do
   root :to => 'users#new'
 
   get "/login" => "sessions#new", as: 'login'
+  get "/my_orders" => "orders#my_orders", as: 'my_orders'
 
   post "/sessions" => "sessions#create", as: 'sessions'
 

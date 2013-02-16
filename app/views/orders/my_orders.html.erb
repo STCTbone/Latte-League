@@ -4,12 +4,13 @@
   <li class="active">Home / Orders</li>
 <% end %>
 
-<h1>Orders</h1>
-<h5>List of Orders in the system</h5>
+<h1>My Orders</h1>
+<h5>My Active Orders</h5>
 <div class="well">
   <%= link_to 'Create a new order', new_order_path, :class => 'btn btn-success' %>
 </div>
 
+<% if @my_orders.any? %>
 
 
 <table class="table table-bordered table-striped">
@@ -24,20 +25,28 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+
+
+    <% @my_orders.each do |order| %>
       <tr>        
         <td><%= order.user.email %></td>
         <td><%= order.total_price %></td>
         <td><%= order.instructions %></td>
         <td><%= order.status %></td>
         <td><%= order.pickup_time %></td>
-
         <td align='right'>
+
   <%= link_to 'Edit', edit_order_path(order), :class => 'btn btn-primary' %>
   <%= link_to 'Delete', order, :class => 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete  %>
         </td>
       </tr>
+
+
     <% end %>
+
+
   </tbody>
 </table>
 
+<% else %>
+<% end %>
