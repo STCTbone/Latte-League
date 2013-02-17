@@ -8,13 +8,32 @@
 
 <h1>Order Details</h1>
 
-<div class="well">
- <%= link_to "Submit Order", {:controller => :Orders, :action => 'submit_order'}, :class => 'btn btn-success', :confirm => 'Are you sure?', :method => :put %>
 
+<div class='well'>
+<button type="button" class="btn btn-block btn-success" data-toggle="collapse" data-target="#demo">
+  Add an item to this order
+</button>
+
+ </div>
+
+<div id="demo" class="collapse">
+  <br>
+
+  <%= simple_form_for(@item_order) do |f| %>
+  <%= f.error_notification %>
+
+<div class="form-inputs">
+  <%= f.hidden_field :order_id, :value => @order.id %>
+  <%= f.association :item, label_method: :name %>
 
 </div>
 
-
+<div class="form-actions">
+  <%= f.button :submit, 'Save Line Item', :class => 'btn-primary'%>
+  <%= link_to "Go back", order_path, :class => 'btn btn-success' %>
+  <% end %>
+</div>
+</div>
 
 
 <table class="table table-bordered table-striped">
@@ -74,31 +93,12 @@
 </table>
 
 
-<div class='well'>
-<button type="button" class="btn btn-block btn-success" data-toggle="collapse" data-target="#demo">
-  Add an item to this order
-</button>
 
- </div>
-<div id="demo" class="collapse">
-  <br>
+<div class="well">
+ <%= link_to "Submit Order", {:controller => :Orders, :action => 'submit_order'}, :class => 'btn btn-success', :confirm => 'Are you sure?', :method => :put %>
 
-  <%= simple_form_for(@item_order) do |f| %>
-  <%= f.error_notification %>
-
-<div class="form-inputs">
-  <%= f.hidden_field :order_id, :value => @order.id %>
-  <%= f.association :item, label_method: :name %>
 
 </div>
-
-<div class="form-actions">
-  <%= f.button :submit, 'Save Line Item', :class => 'btn-primary'%>
-  <%= link_to "Go back", order_path, :class => 'btn btn-success' %>
-  <% end %>
-</div>
-</div>
-
 
 
 

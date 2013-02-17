@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where(is_vendor: false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    if @user.is_vendor == nil
+      @user.is_vendor = false
+    end
 
     respond_to do |format|
       if @user.save
