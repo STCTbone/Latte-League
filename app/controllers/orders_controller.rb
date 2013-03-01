@@ -1,24 +1,15 @@
 class OrdersController < ApplicationController
-  # GET /orders
-  # GET /orders.json
+
   def index
     @orders = Order.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @orders }
-    end
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
+
   def show
     @order = Order.find(params[:id])
     @item_order = ItemOrder.new
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
-    end
+    tax_rate = .1
+    @total = @order.total(tax_rate)
   end
 
   def my_orders
@@ -60,90 +51,49 @@ class OrdersController < ApplicationController
   end
 
   def export_orders
-    require 'rubygems'
-    require 'yaml'
-
-    orders = Order.where(status: "Complete")
-      @export = orders
-
-  book = Spreadsheet::Workbook.new
-  sheet1 = book.create_worksheet :name => 'Orders export'
-  sheet1.row(0).concat ["Username", "Completed Time", "Total Price"]
-  @export.each_with_index do |t, i|
-    sheet1.row(i+1).concat([ t.user.email, t.updated_at, t.total_price])
-  end
-
-  require 'stringio'
-  data = StringIO.new ''
-  book.write data
-  send_data data.string, :type=>"application/excel", :disposition=>'attachment', :filename => "orders_export_#{l(Date.today)}.xls"
+    orders = Order.where(status: "Completed")
+    send_data OrderExporter.new(orders).export_to_xls, :type=>"application/excel", :disposition=>'attachment', :filename => "orders_export_#{l(Date.today)}.xls"
 end
 
 
 
-  # GET /orders/new
-  # GET /orders/new.json
+
   def new
     @order = Order.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
   end
 
-  # GET /orders/1/edit
+
   def edit
     @order = Order.find(params[:id])
   end
 
-  # POST /orders
-  # POST /orders.json
+
   def create
     @order = Order.new(params[:order])
     @order.total_price=0
-    respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
+        redirect_to @order, notice: 'Order was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
 
   end
 
-  # PUT /orders/1
-  # PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
 
-    respond_to do |format|
+
       if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @order, notice: 'Order was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
-    end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
 
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
-    end
-  end
-
-
-  def chart
-
+    redirect_to orders_url
   end
 end

@@ -8,11 +8,9 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :status, :total_price, :user_id
 
-  def total
-       sum = 0
-       self.items.each do |item|
-        sum += item.price.to_i
-       end
-       return sum
+  def total(rate)
+       self.items.map{|x| x.sales_tax(rate)}.sum
   end
+
+
 end
